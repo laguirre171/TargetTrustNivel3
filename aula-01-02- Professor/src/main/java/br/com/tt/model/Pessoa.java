@@ -3,42 +3,38 @@ package br.com.tt.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity; //melhor escolha
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "T_PESSOAS", 
 uniqueConstraints = @UniqueConstraint(columnNames = { "nome", "cpf" }))
 @SequenceGenerator(name = "pessoa_seq", sequenceName = "pessoa_seq", allocationSize = 1)
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L; //melhor escolha para não ter comflito	
-	//fica acima do campo que quero que funcione
+	private static final long serialVersionUID = 1L;
 	@Id
-	@SequenceGenerator(name="pessoa_seq",sequenceName="pessoa_seq", allocationSize= 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pessoa_seq")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_seq")
+	private Long id;
 	private String nome;
-	@Column(length = 11, nullable=false, unique=true, updatable = false)
+	@Column(length = 11, nullable = false, unique = true, updatable = false)
 	private String cpf;
 	private String telefone;
 	private String email;
-	@Column(name="sexo")
-	private TipoSeco sexo;	
+	@Column(name = "sexo")
+	@Enumerated(EnumType.STRING)
+	private TipoSexo tipoSexo;
 	private Endereco endereco;
-		
-	
+
 	public Pessoa() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Pessoa(String nome, String cpf) {
@@ -47,57 +43,60 @@ public class Pessoa implements Serializable{
 		this.cpf = cpf;
 	}
 
-	public TipoSeco getSexo(){
-		return sexo;
+	public TipoSexo getTipoSexo() {
+		return tipoSexo;
 	}
-	
-	public Endereco getEndereco(){
+
+	public void setTipoSexo(TipoSexo tipoSexo) {
+		this.tipoSexo = tipoSexo;
+	}
+
+	public Endereco getEndereco() {
 		return endereco;
 	}
-	
-	
-	public long getId() {
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 	public String getTelefone() {
 		return telefone;
 	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-	public TipoSeco getTipoSexo() {
-		return sexo;
-	}
-
-
-	public void setTipoSexo(TipoSeco tipoSexo) {
-		this.sexo = tipoSexo;
-	}
-	
-	
-	
 
 }
