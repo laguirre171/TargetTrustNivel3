@@ -17,7 +17,7 @@ public class Pessoa implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L; //melhor escolha para não ter comflito	
-
+	//fica acima do campo que quero que funcione
 	@Id
 	@SequenceGenerator(name="pessoa_seq",sequenceName="pessoa_seq", allocationSize= 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pessoa_seq")

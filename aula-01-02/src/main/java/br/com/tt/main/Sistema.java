@@ -20,6 +20,9 @@ public class Sistema {
 		pessoa.setNome("Maria");
 		pessoa.setTipoSexo(TipoSeco.MASCULINO);
 		em.getTransaction().begin();
+		em.persist(new Pessoa());
+		em.persist(new Pessoa());
+		em.persist(new Pessoa());
 		em.persist(pessoa);
 		em.getTransaction().commit();		
 	}
