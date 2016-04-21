@@ -14,14 +14,14 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "T_PESSOAS", 
-uniqueConstraints = @UniqueConstraint(columnNames = { "nome", "cpf" }))
-@SequenceGenerator(name = "pessoa_seq", sequenceName = "pessoa_seq", allocationSize = 1)
+//@Table(name = "T_PESSOAS", 
+//uniqueConstraints = @UniqueConstraint(columnNames = { "nome", "cpf" }))
+//@SequenceGenerator(name = "pessoa_seq", sequenceName = "pessoa_seq", allocationSize = 1)
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_seq")
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_seq")
 	private Long id;
 	private String nome;
 	@Column(length = 11, nullable = false, unique = true, updatable = false)
