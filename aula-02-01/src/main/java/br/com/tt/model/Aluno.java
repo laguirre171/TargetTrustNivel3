@@ -15,14 +15,15 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name ="Alunos")
-@SequenceGenerator(name="aluno_seq", sequenceName="aluno_seq",allocationSize =1)
+@Table(name ="alunos")
 public class Aluno implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@SequenceGenerator(name = "aluno_seq", sequenceName = "aluno_seq", allocationSize = 1)
 	@GeneratedValue(generator="aluno_seq", strategy= GenerationType.SEQUENCE)
 	private Long id;
 	private String Nome;
