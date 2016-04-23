@@ -56,4 +56,14 @@ public class CursoPK implements Serializable{
 		return true;
 	}
 		
+	public CursoPK(String codigo, int versao){
+		this.codigo = codigo;
+		this.versao = versao;
+	}
+	public CursoPK() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }
