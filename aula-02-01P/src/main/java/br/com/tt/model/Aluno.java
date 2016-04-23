@@ -15,27 +15,26 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name ="Alunos")
-@SequenceGenerator(name="aluno_seq", sequenceName="aluno_seq",allocationSize =1)
-public class Aluno implements Serializable{
-	/**
-	 * 
-	 */
+@Table(name = "alunos")
+
+public class Aluno implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(generator="aluno_seq", strategy= GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "aluno_seq", sequenceName = "aluno_seq", allocationSize = 1)
+	@GeneratedValue(generator = "aluno_seq", strategy = GenerationType.SEQUENCE)
 	private Long id;
-	private String Nome;
-	
-	
-	@Column(name="doc_cpf",length = 11)
-	private String cpf;
-	
-	@Column(name="dt_nascimento")
+
+	private String nome;
+
+	@Column(name = "doc_cpf", length = 11)
+	private Integer cpf;
+
+	@Column(name = "dt_nascimento")
 	@Temporal(TemporalType.DATE)
 	private Date dataNasc;
-	
-	@Transient  
+
+	@Transient
 	private Integer idade;
 
 	public Long getId() {
@@ -47,18 +46,18 @@ public class Aluno implements Serializable{
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 
-	public String getCpf() {
+	public Integer getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
 	}
 
@@ -77,6 +76,5 @@ public class Aluno implements Serializable{
 	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
-	
 
 }
