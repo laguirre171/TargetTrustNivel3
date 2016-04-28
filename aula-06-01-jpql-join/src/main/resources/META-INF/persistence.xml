@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="pu_jpa" transaction-type="RESOURCE_LOCAL">
+		<class>br.com.tt.model.Aluno</class>
+		<class>br.com.tt.model.Conceito</class>
+		<class>br.com.tt.model.Curriculo</class>
+		<class>br.com.tt.model.CurriculoPK</class>
+		<class>br.com.tt.model.Curso</class>
+		<class>br.com.tt.model.Disciplina</class>
+		<class>br.com.tt.model.HistoricosEscolare</class>
+		<class>br.com.tt.model.HistoricosEscolarePK</class>
+		<class>br.com.tt.model.Professore</class>
+		<class>br.com.tt.model.Turma</class>
+		<class>br.com.tt.model.TurmaPK</class>
+		<class>br.com.tt.model.TurmasMatriculada</class>
+		<class>br.com.tt.model.TurmasMatriculadaPK</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+			<property name="javax.persistence.jdbc.user" value="postgres"/>
+			<property name="javax.persistence.jdbc.password" value="target"/>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.use_sql_comments" value="true"/>
+		</properties>
+	</persistence-unit>
+</persistence>
