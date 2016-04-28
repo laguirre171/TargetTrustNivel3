@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.tt.model.Cliente;
 
-public class Jpql06Somar {
+public class Jpql06Funcoes {
 
 	public static void main(String[] args) {
 		soma();
