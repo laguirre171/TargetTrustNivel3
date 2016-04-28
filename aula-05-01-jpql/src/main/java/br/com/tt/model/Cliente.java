@@ -8,11 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name=Cliente.ALL,query="SELECT c "
+			+ "FROM Cliente c"),
+	@NamedQuery(name=Cliente.QUERY_NOME,query="SELECT c FROM "
+			+ "Cliente c "
+			+ "WHERE c.nome = :nome "),
+}) 
 public class Cliente implements Serializable{
 	
 	/**
@@ -20,6 +29,8 @@ public class Cliente implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public static final String ALL = "Cliente.all";
+	public static final String QUERY_NOME = "CLIENTE_QUERY_NOME";
 	public static final String CONSULTAR_NOME = "SELECT c FROM Cliente c WHERE c.nome = :nome";
 	
 	@Id

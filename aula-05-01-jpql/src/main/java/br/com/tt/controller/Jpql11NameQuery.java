@@ -18,10 +18,10 @@ public class Jpql11NameQuery {
 	public static void main(String[] args) {
 		
 		EntityManager em = getEM();
-		Class<ClienteVO> clazz = ClienteVO.class;
-		String sql =  "SELECT * FROM CLIENTE ";
-
-		Query query = em.createNativeQuery(sql, clazz);
+		Class<Cliente> clazz = Cliente.class;
+		TypedQuery<Cliente> query;
+		
+		query = em.createNamedQuery(Cliente.ALL, clazz);
 		List<Cliente> clientes = query.getResultList();
 		clientes.forEach(c-> out.println(c));
 		
