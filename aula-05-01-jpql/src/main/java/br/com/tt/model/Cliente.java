@@ -19,6 +19,9 @@ public class Cliente implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public static final String CONSULTAR_NOME = "SELECT c FROM Cliente c WHERE c.nome = :nome";
+	
 	@Id
 	@SequenceGenerator(name="pessoa_seq", 
 	   				   sequenceName="", 
@@ -36,6 +39,10 @@ public class Cliente implements Serializable{
 	
 	public Long getId() {
 		return id;
+	}
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNasc=" + dataNasc + "]";
 	}
 	public void setId(Long id) {
 		this.id = id;

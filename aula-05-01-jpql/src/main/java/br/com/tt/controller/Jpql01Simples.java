@@ -5,19 +5,18 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import static java.lang.System.exit;
 import static java.lang.System.out;
 import br.com.tt.model.Cliente;
 
-public class JpqlSimples {
+public class Jpql01Simples {
 
 	public static void main(String[] args) {
 		EntityManager em = getEM();
 		//salvarCliente();
-		String sql = "SELECT c FROM CLIENTE c";
+		String sql = "SELECT c FROM Cliente c";
 		TypedQuery<Cliente> query = em.createQuery(sql, Cliente.class);
 		List<Cliente> resultList = query.getResultList();
 		resultList.forEach(c-> out.println(c));
