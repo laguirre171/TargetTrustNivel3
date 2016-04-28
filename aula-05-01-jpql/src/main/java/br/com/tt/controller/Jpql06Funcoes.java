@@ -16,6 +16,7 @@ public class Jpql06Funcoes {
 		soma();
 		media();
 		max();
+		size();
 	}
 
 	private static void soma() {
@@ -36,6 +37,17 @@ public class Jpql06Funcoes {
 		//Alt + shift + a - para copiar 			
 		TypedQuery<Long> query = getEM().createQuery("SELECT MAX(c.id) FROM Cliente c ", Long.class);
 		Long soma = query.getSingleResult();
+		out.println("MaX dos Ids = " + soma);
+	}
+	
+	private static void size() {
+		//Alt + shift + a - para copiar 			
+		String sql = "SELECT SIZE(c.id) FROM Cliente c ";
+		Class<Integer> clazz = Integer.class;
+		EntityManager em = getEM();
+		TypedQuery<Integer> query = getEM().createQuery(sql, clazz);
+		
+		Integer soma = query.getSingleResult();
 		out.println("MaX dos Ids = " + soma);
 	}
 
