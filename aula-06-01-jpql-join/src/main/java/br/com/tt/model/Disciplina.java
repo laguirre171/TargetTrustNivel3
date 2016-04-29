@@ -4,69 +4,54 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the disciplinas database table.
  * 
  */
 @Entity
-@Table(name="disciplinas")
-@NamedQuery(name="Disciplina.findAll", query="SELECT d FROM Disciplina d")
+@Table(name = "disciplinas")
+@NamedQuery(name = "Disciplina.findAll", query = "SELECT d FROM Disciplina d")
 public class Disciplina implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="DISCIPLINAS_CODDISC_GENERATOR", sequenceName="DISCIPLINAS_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DISCIPLINAS_CODDISC_GENERATOR")
-	@Column(name="cod_disc", unique=true, nullable=false)
+	@SequenceGenerator(name = "DISCIPLINAS_CODDISC_GENERATOR", sequenceName = "DISCIPLINAS_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DISCIPLINAS_CODDISC_GENERATOR")
+	@Column(name = "cod_disc", unique = true, nullable = false)
 	private Integer codDisc;
 
-	@Column(name="cod_disc_equiv")
+	@Column(name = "cod_disc_equiv")
 	private Integer codDiscEquiv;
 
-	@Column(name="nom_disc", nullable=false, length=60)
+	@Column(name = "nom_disc", nullable = false, length = 60)
 	private String nomDisc;
 
-	@Column(name="qtd_cred", nullable=false)
+	@Column(name = "qtd_cred", nullable = false)
 	private Integer qtdCred;
 
-	//bi-directional many-to-one association to Curriculo
-	@OneToMany(mappedBy="disciplina")
+	// bi-directional many-to-one association to Curriculo
+	@OneToMany(mappedBy = "disciplina")
 	private List<Curriculo> curriculos;
 
-	//bi-directional one-to-one association to Disciplina
+	// bi-directional one-to-one association to Disciplina
 	@OneToOne
-	@JoinColumn(name="cod_disc", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name = "cod_disc", nullable = false, insertable = false, updatable = false)
 	private Disciplina disciplina1;
 
-	//bi-directional one-to-one association to Disciplina
-	@OneToOne(mappedBy="disciplina1")
+	// bi-directional one-to-one association to Disciplina
+	@OneToOne(mappedBy = "disciplina1")
 	private Disciplina disciplina2;
 
-	//bi-directional many-to-one association to HistoricosEscolare
-	@OneToMany(mappedBy="disciplina")
-	private List<HistoricosEscolare> historicosEscolares;
-
-	//bi-directional many-to-many association to Disciplina
+	// bi-directional many-to-many association to Disciplina
 	@ManyToMany
-	@JoinTable(
-		name="pre_requisitos"
-		, joinColumns={
-			@JoinColumn(name="cod_disc_pre", nullable=false)
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="cod_disc", nullable=false)
-			}
-		)
+	@JoinTable(name = "pre_requisitos", joinColumns = {
+			@JoinColumn(name = "cod_disc_pre", nullable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "cod_disc", nullable = false) })
 	private List<Disciplina> disciplinas1;
 
-	//bi-directional many-to-many association to Disciplina
-	@ManyToMany(mappedBy="disciplinas1")
+	// bi-directional many-to-many association to Disciplina
+	@ManyToMany(mappedBy = "disciplinas1")
 	private List<Disciplina> disciplinas2;
-
-	//bi-directional many-to-one association to Turma
-	@OneToMany(mappedBy="disciplina")
-	private List<Turma> turmas;
 
 	public Disciplina() {
 	}
@@ -141,28 +126,6 @@ public class Disciplina implements Serializable {
 		this.disciplina2 = disciplina2;
 	}
 
-	public List<HistoricosEscolare> getHistoricosEscolares() {
-		return this.historicosEscolares;
-	}
-
-	public void setHistoricosEscolares(List<HistoricosEscolare> historicosEscolares) {
-		this.historicosEscolares = historicosEscolares;
-	}
-
-	public HistoricosEscolare addHistoricosEscolare(HistoricosEscolare historicosEscolare) {
-		getHistoricosEscolares().add(historicosEscolare);
-		historicosEscolare.setDisciplina(this);
-
-		return historicosEscolare;
-	}
-
-	public HistoricosEscolare removeHistoricosEscolare(HistoricosEscolare historicosEscolare) {
-		getHistoricosEscolares().remove(historicosEscolare);
-		historicosEscolare.setDisciplina(null);
-
-		return historicosEscolare;
-	}
-
 	public List<Disciplina> getDisciplinas1() {
 		return this.disciplinas1;
 	}
@@ -177,28 +140,6 @@ public class Disciplina implements Serializable {
 
 	public void setDisciplinas2(List<Disciplina> disciplinas2) {
 		this.disciplinas2 = disciplinas2;
-	}
-
-	public List<Turma> getTurmas() {
-		return this.turmas;
-	}
-
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}
-
-	public Turma addTurma(Turma turma) {
-		getTurmas().add(turma);
-		turma.setDisciplina(this);
-
-		return turma;
-	}
-
-	public Turma removeTurma(Turma turma) {
-		getTurmas().remove(turma);
-		turma.setDisciplina(null);
-
-		return turma;
 	}
 
 }

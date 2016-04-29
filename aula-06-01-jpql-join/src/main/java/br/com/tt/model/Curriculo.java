@@ -15,16 +15,12 @@ public class Curriculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private CurriculoPK id;
+	private Long id;
 
 	@Column(nullable=false)
 	private Integer periodo;
 
-	//bi-directional many-to-one association to Curso
-	@ManyToOne
-	@JoinColumn(name="cod_curso", nullable=false, insertable=false, updatable=false)
-	private Curso curso;
-
+	
 	//bi-directional many-to-one association to Disciplina
 	@ManyToOne
 	@JoinColumn(name="cod_disc", nullable=false, insertable=false, updatable=false)
@@ -33,11 +29,11 @@ public class Curriculo implements Serializable {
 	public Curriculo() {
 	}
 
-	public CurriculoPK getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(CurriculoPK id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -49,14 +45,7 @@ public class Curriculo implements Serializable {
 		this.periodo = periodo;
 	}
 
-	public Curso getCurso() {
-		return this.curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-
+	
 	public Disciplina getDisciplina() {
 		return this.disciplina;
 	}

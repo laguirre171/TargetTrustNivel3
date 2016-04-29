@@ -54,4 +54,10 @@ public class CurriculoPK implements Serializable {
 		
 		return hash;
 	}
+	@Override
+	public String toString() {
+		return "CurriculoPK [codCurso=" + codCurso + ", codDisc=" + codDisc + "]";
+	}
+	
+	
 }
